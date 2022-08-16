@@ -48,6 +48,7 @@ public class UI {
 			throw new InputMismatchException("Error reading chess Position. Valid values are from a1 to h8.");
 		}
 	}
+	
 	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
 		printBoard(chessMatch.getPieces());
 		System.out.println();
@@ -55,6 +56,11 @@ public class UI {
 		System.out.println();
 		System.out.println("Turn: " + chessMatch.getTurn());
 		System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+		if (chessMatch.getCheck()) {
+			System.out.print(ANSI_RED);
+			System.out.println("CHECK!");
+			System.out.print(ANSI_RESET);
+		}
 	}
 	
 	public static void printBoard(ChessPiece[][] pieces) {
